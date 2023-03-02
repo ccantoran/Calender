@@ -124,9 +124,6 @@ function selectedToday(){
 
 //////////////////////////////////Days in Month/////////////////////////
 
-console.log(curMonth)
-console.log(curYear)
-
 
 let daysInMonthObj = {
     "January": 31,
@@ -158,37 +155,47 @@ let daysOfWeekObj = {
 
 
 function datesOnCalender(){
-    
 
-
-
+//strMonth
     let strMonth = `${curMonth}`
-
     if(curMonth.toString().length == 1){
         strMonth = `0${curMonth}`
     }
     
+//finding the dates and starting on the correct one    
     let findDateObj = new Date(`${curYear}-${strMonth}-01T00:00:00.000`)
     let numDayOfWeek = findDateObj.getDay()
-    console.log(numDayOfWeek)
+    let theMond = findDateObj.getMonth()
     
+    //month name
+    const date = new Date();
+    date.setMonth(theMond);
+    var abc = date.toLocaleString('en-US', { month: 'long' })
+  
+
+        let dayGrid = document.querySelector('.dayGrid')  
+
+
+
+
+        // if dayGrid has child
+
+
+    for(let i=1; i<=daysInMonthObj[abc] + numDayOfWeek; i++){
     
-    for(let i=1; i<=31 + numDayOfWeek; i++){
-        //populate the graph for every i and document fill w/number
-        let dayGrid = document.querySelector('.dayGrid')
-        
     
         if(i <= numDayOfWeek){
-            const newLi = document.createElement("button");
+            const newLi = document.createElement("button")
+            newLi.setAttribute('class', 'buTTons')
             dayGrid.appendChild(newLi)
     
         }else{
-            const newLi = document.createElement("button");
-            const newContent = document.createTextNode(i-numDayOfWeek);
+            const newLi = document.createElement("button")
+            const newContent = document.createTextNode(i-numDayOfWeek)
+            newLi.setAttribute('class', 'buTTons')
             newLi.appendChild(newContent);
             dayGrid.appendChild(newLi)
         }
-    
     }
     
 
