@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html style="overflow: hidden;">
+<head>
+    <!-- <script src="../Resources/Apis/Proxy.js" cwidget="DateWidget"></script> -->
+    <title>DateWidget</title>
+</head>
+<body>
+
+	<div class="calender">
+		<header>
+			<button onclick="backArrow(); refreshDate()" class="backArrow arrow">L ARROW</button>
+			<div class="headerMonth">month</div>
+			<div class="headerYear">year</div>
+			<button onclick="forwardArrow(); refreshDate()" class="forwardArrow arrow" disabled>R ARROW</button>
+		</header>
+		<ul class="daysOfWeek">
+			<li>Sunday</li>
+			<li>Monday</li>
+			<li>Tuesday</li>
+			<li>Wednesday</li>
+			<li>Thursday</li>
+			<li>Friday</li>
+			<li>Saturday</li>
+		</ul>
+		<ul class="dayGrid">
+		</ul>
+
+
+		<div class="selectedDate">
+			<div class="selectedMonth">Month</div>
+			<div class="selectedDay">Day</div>
+			<div class="selectedYear"></div>
+			<button class="selectedToday" onclick="selectedToday()">Today</button>
+			<button onclick="getStr()">submit</button>
+		</div>
+	</div>
+
+
+	<style>
+		li{
+			list-style: none;
+			margin-left: 0;
+			padding-left: 0;
+			border:blue solid;
+		}
+		.calender{
+			border:red solid;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		header{
+			display: flex;
+			justify-content: space-around;
+			width: 80%;
+		}
+		.arrow{
+			border:pink solid;
+		}
+		.selectedDate{
+			border:green solid;
+			height: 100px;
+			display: flex;
+			justify-content: space-evenly;
+		}
+		.daysOfWeek{
+			display: flex;
+			width: 80%;
+			border:palegoldenrod solid;
+			padding:0;
+			justify-content: space-around;
+		}
+		.dayGrid{
+			height: 200px;
+			width:70%;
+			border:yellow solid;
+			list-style-type: none;
+			padding:0;
+			box-sizing: border-box;
+			display:grid;
+			grid-template-rows: repeat(5, 1fr);
+			grid-template-columns: repeat(7, 1fr);
+		}
+		.dayGrid>button{
+			height:20px;
+			width:100%;
+			border:orange solid .5px;
+		}
+
+	</style>
+    <script src="./custom_widget.js"></script>
+
+</body>
+</html>
