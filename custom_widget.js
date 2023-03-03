@@ -3,11 +3,13 @@
 
 
 
-////////////////////Header Information/////////////////
+////////////////////Header Information///////////////////////////////////
 //todays Date
 let today = new Date()
 var todayYear = today.getFullYear()
 var todayMonth = today.getMonth() + 1
+var todaysDate = today.getDate()
+let curDay = todaysDate
 
 
 
@@ -94,13 +96,15 @@ function forwardArrow(){
 /////////////////////////////Selected Date///////////////
 document.querySelector('.selectedYear').innerText = curYear
 document.querySelector('.selectedMonth').innerText = monthObj[curMonth]
+document.querySelector('.selectedDay').innerText = curDay
+
 
 function refreshDate(){
     document.querySelector('.selectedYear').innerText = curYear
-    console.log(curYear)
     document.querySelector('.selectedMonth').innerText = monthObj[curMonth]
-    console.log(monthObj[curMonth])
 }
+
+
 
 
 /////////////////////////////Selected Today Button////////////////
@@ -108,22 +112,7 @@ function selectedToday(){
     location.reload();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//////////////////////////////////Days in Month/////////////////////////
-
+//////////////////////////////////Populating Calender w/ Days /////////////////////////
 
 let daysInMonthObj = {
     "January": 31,
@@ -153,82 +142,80 @@ let daysOfWeekObj = {
     6 : "Saturday",
 }
 
-
-function datesOnCalender(){
-
-//strMonth
-    let strMonth = `${curMonth}`
+//formating number of Month to fit string and have length of 2
+let strMonth = `${curMonth}`
     if(curMonth.toString().length == 1){
         strMonth = `0${curMonth}`
     }
+
+
+function datesOnCalender(){
+let dayGrid = document.querySelector('.dayGrid')  
+
+// Delete the days if the calender is already populated 
+let element = document.getElementById("dayGrid");
+    while (element.firstChild) {
+    element.removeChild(element.firstChild);
+    }
+
+
     
-//finding the dates and starting on the correct one    
-    let findDateObj = new Date(`${curYear}-${strMonth}-01T00:00:00.000`)
-    let numDayOfWeek = findDateObj.getDay()
-    let theMond = findDateObj.getMonth()
+//what day of the week did the 1st of the month fall on    
+let findDateObj = new Date(`${curYear}-${strMonth}-01T00:00:00.000`)
+let numDayOfWeek = findDateObj.getDay()
+//Num of month to Full string
+let numMonth = findDateObj.getMonth()
+const mutToday = new Date();
+mutToday.setMonth(numMonth);
+var fullMonthStr = mutToday.toLocaleString('en-US', { month: 'long' })
     
-    //month name
-    const date = new Date();
-    date.setMonth(theMond);
-    var abc = date.toLocaleString('en-US', { month: 'long' })
-  
-
-        let dayGrid = document.querySelector('.dayGrid')  
-
-
-
-
-        // if dayGrid has child
-
-
-    for(let i=1; i<=daysInMonthObj[abc] + numDayOfWeek; i++){
-    
-    
+//add buttons w/ num of days and have them start on correct day of week
+//give them onclick function that populates 
+    for(let i=1; i<=daysInMonthObj[fullMonthStr] + numDayOfWeek; i++){
         if(i <= numDayOfWeek){
-            const newLi = document.createElement("button")
-            newLi.setAttribute('class', 'buTTons')
-            dayGrid.appendChild(newLi)
-    
+            const childButtons = document.createElement("button")
+            childButtons.setAttribute('class', 'childButtons')
+            childButtons.setAttribute('disabled', true)
+            dayGrid.appendChild(childButtons)
         }else{
-            const newLi = document.createElement("button")
+            const childButtons = document.createElement("button")
             const newContent = document.createTextNode(i-numDayOfWeek)
-            newLi.setAttribute('class', 'buTTons')
-            newLi.appendChild(newContent);
-            dayGrid.appendChild(newLi)
+            childButtons.setAttribute('class', 'childButtons')
+            childButtons.appendChild(newContent);
+            dayGrid.appendChild(childButtons)
+
+            childButtons.onclick = function(){
+                curDay = i - numDayOfWeek
+                console.log(curDay)
+                document.querySelector('.selectedDay').innerText = curDay
+            }
         }
     }
-    
-
 }
 
 datesOnCalender()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //////////////////////////////////Data Str ///////////////////////
 var dataStr = ''
 
+let dataMonth = strMonth
+let dataYear = curYear
+let dataDay = document.querySelector('selectedDay')
+
+console.log(dataMonth)
 function getStr(){
-    if(curMonth.toString().length == 1){
-        dataStr = `${curYear}-0${curMonth}-DD`
+    if(dataDay.toString().length == 1){
+        dataStr = `${dataYear}-${dataMonth}-0${dataDay}`
     }else{
-        dataStr = `${curYear}-${curMonth}-DD`
+        dataStr = `${dataYear}-${dataMonth}-${dataDay}`
     }
     console.log(dataStr)
 }
 
+getStr(curDay)
+
+
+let allBuTTONS = document.querySelectorAll(".childButtons");
+allBuTTONS.forEach(box => {
+  box.addEventListener('click', getStr);
+});

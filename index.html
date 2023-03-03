@@ -22,10 +22,7 @@
 			<li>Friday</li>
 			<li>Saturday</li>
 		</ul>
-		<ul class="dayGrid">
-		</ul>
-
-
+		<ul class="dayGrid" id="dayGrid"></ul>
 		<div class="selectedDate">
 			<div class="selectedMonth">Month</div>
 			<div class="selectedDay">Day</div>
@@ -34,7 +31,6 @@
 			<button onclick="getStr()">submit</button>
 		</div>
 	</div>
-
 
 	<style>
 		li{
@@ -62,6 +58,7 @@
 			height: 100px;
 			display: flex;
 			justify-content: space-evenly;
+			width:50%;
 		}
 		.daysOfWeek{
 			display: flex;
@@ -83,9 +80,20 @@
 		}
 		.dayGrid>button{
 			height:20px;
-			width:100%;
+			width:40%;
 			border:orange solid .5px;
+			border-radius: 20px;
 		}
+		.childButtons{
+			background-color: white;
+		}
+		.childButtons:focus{
+			background-color: red;
+		}
+		.childButtons:hover{
+			background-color: grey;
+		}
+
 
 	</style>
     <script src="./custom_widget.js"></script>
