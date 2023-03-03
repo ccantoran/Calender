@@ -2,75 +2,111 @@
 <html style="overflow: hidden;">
 <head>
     <!-- <script src="../Resources/Apis/Proxy.js" cwidget="DateWidget"></script> -->
+
     <title>DateWidget</title>
 </head>
 <body>
 
 	<div class="calender">
+		<div class="selectedDate">
+			<div class="selectedYear"></div>
+			<div class="monthAndDay">
+				<div class="selectedMonth"></div>
+				<div class="selectedDay"></div>
+			</div>
+			
+			<button class="selectedToday" onclick="selectedToday()">Today</button>
+		</div>
+
 		<header>
-			<button onclick="backArrow(); refreshDate(); datesOnCalender()" class="backArrow arrow">L ARROW</button>
-			<div class="headerMonth">month</div>
-			<div class="headerYear">year</div>
-			<button onclick="forwardArrow(); refreshDate(); datesOnCalender()" class="forwardArrow arrow" disabled>R ARROW</button>
+			<div class="headerInfo">
+				<div class="headerMonth">month</div>
+				<div class="headerYear">year</div>
+			</div>
+			<div>
+				<button onclick="backArrow(); refreshDate(); datesOnCalender()" class="backArrow arrow">L</button>
+				<button onclick="forwardArrow(); refreshDate(); datesOnCalender()" class="forwardArrow arrow" disabled>R</button>
+			</div>
 		</header>
 		<ul class="daysOfWeek">
-			<li>Sunday</li>
-			<li>Monday</li>
-			<li>Tuesday</li>
-			<li>Wednesday</li>
-			<li>Thursday</li>
-			<li>Friday</li>
-			<li>Saturday</li>
+			<li>S</li>
+			<li>M</li>
+			<li>T</li>
+			<li>W</li>
+			<li>T</li>
+			<li>F</li>
+			<li>S</li>
 		</ul>
 		<ul class="dayGrid" id="dayGrid"></ul>
-		<div class="selectedDate">
-			<div class="selectedMonth">Month</div>
-			<div class="selectedDay">Day</div>
-			<div class="selectedYear"></div>
-			<button class="selectedToday" onclick="selectedToday()">Today</button>
-			<button onclick="getStr()">submit</button>
-		</div>
+		
 	</div>
 
 	<style>
+		:root{
+			--button-color:rgb(250, 232, 133);
+		}
 		li{
 			list-style: none;
 			margin-left: 0;
 			padding-left: 0;
-			border:blue solid;
 		}
+
 		.calender{
-			border:red solid;
+			border:grey solid;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+			width: 300px;
 		}
+
+		.selectedDate{
+			/* border:green solid; */
+			height: fit-content;
+			display: flex;
+			flex-direction: column;
+			width:90%;
+			margin-bottom: 15px;
+		}
+		.selectedYear{
+			color: grey;
+		}
+		.monthAndDay{
+			display: flex;
+			font-size: 40px;
+		}
+		.selectedToday{
+			height: 20px;
+			width: 70px;
+		}
+		.selectedDay, .headerYear{
+			padding-left:5px;
+		}
+		
 		header{
 			display: flex;
-			justify-content: space-around;
+			justify-content: space-between;
 			width: 80%;
+			/* border:green solid; */
+		}
+		.headerInfo{
+			display: flex;
 		}
 		.arrow{
-			border:pink solid;
+			/* border:pink solid; */
 		}
-		.selectedDate{
-			border:green solid;
-			height: 100px;
-			display: flex;
-			justify-content: space-evenly;
-			width:50%;
-		}
+			
 		.daysOfWeek{
 			display: flex;
-			width: 80%;
-			border:palegoldenrod solid;
+			width: 95%;
 			padding:0;
 			justify-content: space-around;
+			border:rgb(241, 241, 241) solid;
+			margin-bottom: 0;
 		}
 		.dayGrid{
+			margin-top:0;
 			height: 200px;
-			width:70%;
-			border:yellow solid;
+			width:95%;
 			list-style-type: none;
 			padding:0;
 			box-sizing: border-box;
@@ -79,19 +115,18 @@
 			grid-template-columns: repeat(7, 1fr);
 		}
 		.dayGrid>button{
-			height:20px;
-			width:40%;
-			border:orange solid .5px;
+			width:100%;
 			border-radius: 20px;
+			border:none;
 		}
 		.childButtons{
 			background-color: white;
 		}
 		.childButtons:focus{
-			background-color: red;
+			background-color: var(--button-color)
 		}
 		.childButtons:hover{
-			background-color: grey;
+			border: black solid 1px;
 		}
 
 

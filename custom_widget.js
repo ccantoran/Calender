@@ -127,8 +127,6 @@ let daysOfWeekObj = {
     6 : "Saturday",
 }
 
-
-
 function datesOnCalender(){
 let dayGrid = document.querySelector('.dayGrid')  
 
@@ -151,23 +149,17 @@ const mutToday = new Date();
 mutToday.setMonth(numMonth);
 var fullMonthStr = mutToday.toLocaleString('en-US', { month: 'long' })
     
-//add buttons w/ num of days and have them start on correct day of week
-//give them onclick function that populates 
-
-
 
 //is the curYear in leap year?
 let leapOrNoLeap = curYear % 4 == 0 ? true : false
 
+//If Feb is curMonth then true or false to find out # of days for total Month 
 let totalDaysInMonth = daysInMonthObj[fullMonthStr]
-
 if (fullMonthStr == "February" && leapOrNoLeap == true){
     totalDaysInMonth = daysInMonthObj.February.true
 }else if(fullMonthStr == "February" && leapOrNoLeap == false){
     totalDaysInMonth = daysInMonthObj.February.false
 }
-
-console.log(totalDaysInMonth)
 
 
     for(let i=1; i<=totalDaysInMonth + numDayOfWeek; i++){
