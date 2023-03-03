@@ -1,17 +1,10 @@
-﻿
-
-
-
-
-////////////////////Header Information///////////////////////////////////
+﻿////////////////////Header Information///////////////////////////////////
 //todays Date
 let today = new Date()
 var todayYear = today.getFullYear()
 var todayMonth = today.getMonth() + 1
 var todaysDate = today.getDate()
 let curDay = todaysDate
-
-
 
 
 //Mutable Year Variable
@@ -48,13 +41,10 @@ let monthObj = {
     12 : "December"
 }
 
-
 //Mutable Month Variable
 let curMonth = todayMonth
 
 document.querySelector('.headerMonth').innerText = monthObj[curMonth]
-
-
 
 //////////////////////////////////////backArrow/////////////////////
 //disable after 2 years
@@ -74,7 +64,6 @@ function backArrow(){
     document.querySelector('.headerMonth').innerText = monthObj[curMonth]
     document.querySelector('.headerYear').innerText = curYear
 }
-
 
 /////////////////////////////////forwardArrow//////////////////
 function forwardArrow(){
@@ -105,8 +94,6 @@ function refreshDate(){
 }
 
 
-
-
 /////////////////////////////Selected Today Button////////////////
 function selectedToday(){
     location.reload();
@@ -116,7 +103,7 @@ function selectedToday(){
 
 let daysInMonthObj = {
     "January": 31,
-    "February": 28,
+    "February": {true: 29, false:28},
     "March": 31,
     "April": 30,
     "May": 31,
@@ -129,8 +116,6 @@ let daysInMonthObj = {
     "December": 31,
 }
 
-//account for leap year
-
 
 let daysOfWeekObj = {
     0 : "Sunday",
@@ -142,11 +127,6 @@ let daysOfWeekObj = {
     6 : "Saturday",
 }
 
-//formating number of Month to fit string and have length of 2
-let strMonth = `${curMonth}`
-    if(curMonth.toString().length == 1){
-        strMonth = `0${curMonth}`
-    }
 
 
 function datesOnCalender(){
@@ -159,10 +139,12 @@ let element = document.getElementById("dayGrid");
     }
 
 
-    
+//formating number of Month to fit string and have length of 2
+let strMonth = curMonth.toString().length == 1 ? `0${curMonth}` : curMonth
 //what day of the week did the 1st of the month fall on    
 let findDateObj = new Date(`${curYear}-${strMonth}-01T00:00:00.000`)
 let numDayOfWeek = findDateObj.getDay()
+
 //Num of month to Full string
 let numMonth = findDateObj.getMonth()
 const mutToday = new Date();
@@ -171,7 +153,24 @@ var fullMonthStr = mutToday.toLocaleString('en-US', { month: 'long' })
     
 //add buttons w/ num of days and have them start on correct day of week
 //give them onclick function that populates 
-    for(let i=1; i<=daysInMonthObj[fullMonthStr] + numDayOfWeek; i++){
+
+
+
+//is the curYear in leap year?
+let leapOrNoLeap = curYear % 4 == 0 ? true : false
+
+let totalDaysInMonth = daysInMonthObj[fullMonthStr]
+
+if (fullMonthStr == "February" && leapOrNoLeap == true){
+    totalDaysInMonth = daysInMonthObj.February.true
+}else if(fullMonthStr == "February" && leapOrNoLeap == false){
+    totalDaysInMonth = daysInMonthObj.February.false
+}
+
+console.log(totalDaysInMonth)
+
+
+    for(let i=1; i<=totalDaysInMonth + numDayOfWeek; i++){
         if(i <= numDayOfWeek){
             const childButtons = document.createElement("button")
             childButtons.setAttribute('class', 'childButtons')
@@ -186,8 +185,8 @@ var fullMonthStr = mutToday.toLocaleString('en-US', { month: 'long' })
 
             childButtons.onclick = function(){
                 curDay = i - numDayOfWeek
-                console.log(curDay)
                 document.querySelector('.selectedDay').innerText = curDay
+                getStr()
             }
         }
     }
@@ -196,26 +195,17 @@ var fullMonthStr = mutToday.toLocaleString('en-US', { month: 'long' })
 datesOnCalender()
 
 //////////////////////////////////Data Str ///////////////////////
+
+function getStr(){
+let dataMonth = curMonth.toString().length == 1 ? `0${curMonth}` : curMonth
 var dataStr = ''
 
-let dataMonth = strMonth
-let dataYear = curYear
-let dataDay = document.querySelector('selectedDay')
-
-console.log(dataMonth)
-function getStr(){
-    if(dataDay.toString().length == 1){
-        dataStr = `${dataYear}-${dataMonth}-0${dataDay}`
+    if(curDay.toString().length == 1){
+        dataStr = `${curYear}-${dataMonth}-0${curDay}`
     }else{
-        dataStr = `${dataYear}-${dataMonth}-${dataDay}`
+        dataStr = `${curYear}-${dataMonth}-${curDay}`
     }
     console.log(dataStr)
 }
 
-getStr(curDay)
-
-
-let allBuTTONS = document.querySelectorAll(".childButtons");
-allBuTTONS.forEach(box => {
-  box.addEventListener('click', getStr);
-});
+getStr()
