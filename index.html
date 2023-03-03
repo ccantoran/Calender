@@ -40,15 +40,103 @@
 		<ul class="dayGrid" id="dayGrid"></ul>
 		
 	</div>
+	<div class="time">
+		<div class="timeHeader">
+			<div class="timeOutcome">
+				<div id="userHour">00</div>
+				<div>:</div>
+				<div id="userMin">00</div>
+				<div id="userAmPm">AM</div>
+			</div>
+			<label class="switch" for="checkbox">
+				<input type="checkbox" name="checkbox" id="checkbox" onclick="dayChange()">
+				<span class="slider round"></span>
+			</label>
+		</div>
+		
+	
+		<!-- <button onclick="timeStr()">submit</button> -->
+		<div class="clock clockHour">
+			<div class="clockParts test1">
+				<div class="pos-center">
+					<button value="12" onclick="getTimeHour(12)">12</button>
+				</div>
+				<div class="pos-second">
+					<button onclick="getTimeHour(11)">11</button>
+					<button onclick="getTimeHour(1)">1</button>
+				</div>
+				<div class="pos-third">
+					<button onclick="getTimeHour(10)">10</button>
+					<button onclick="getTimeHour(2)">2</button>
+				</div>
+				<div class="pos-fourth">
+					<button onclick="getTimeHour(9)">9</button>
+					<button onclick="getTimeHour(3)">3</button>
+				</div>
+				<div class="pos-third">
+					<button onclick="getTimeHour(8)">8</button>
+					<button onclick="getTimeHour(4)">4</button>
+				</div>
+				<div class="pos-second">
+					<button onclick="getTimeHour(7)">7</button>
+					<button onclick="getTimeHour(5)">5</button>
+				</div>
+				<div class="pos-center">
+					<button value="11" onclick="getTimeHour(6)">6</button>
+				</div>
+			</div>
+		</div>
+		<div class="clock clockMin">
+			<div class="clockParts">
+				<div class="pos-center">
+					<button value="12" onclick="getTimeMin(0)">0</button>
+				</div>
+				<div class="pos-second">
+					<button onclick="getTimeMin(55)">55</button>
+					<button onclick="getTimeMin(5)">5</button>
+				</div>
+				<div class="pos-third">
+					<button onclick="getTimeMin(50)">50</button>
+					<button onclick="getTimeMin(10)">10</button>
+				</div>
+				<div class="pos-fourth">
+					<button onclick="getTimeMin(45)">45</button>
+					<button onclick="getTimeMin(15)">15</button>
+				</div>
+				<div class="pos-third">
+					<button onclick="getTimeMin(40)">40</button>
+					<button onclick="getTimeMin(20)">20</button>
+				</div>
+				<div class="pos-second">
+					<button onclick="getTimeMin(35)">35</button>
+					<button onclick="getTimeMin(25)">25</button>
+				</div>
+				<div class="pos-center">
+					<button value="11" onclick="getTimeMin(30)">30</button>
+				</div>
+			</div>
+		</div>
+		
+		
+	</div>
+	
+
+
+
 
 	<style>
 		:root{
 			--button-color:rgb(250, 232, 133);
+			--clock-color:rgb(245, 244, 244);
+			--dayTime-color:rgb(252, 240, 130);
 		}
 		li{
 			list-style: none;
 			margin-left: 0;
 			padding-left: 0;
+		}
+		body{
+			display: flex;
 		}
 
 		.calender{
@@ -72,7 +160,7 @@
 		}
 		.monthAndDay{
 			display: flex;
-			font-size: 40px;
+			font-size: 30px;
 		}
 		.selectedToday{
 			height: 20px;
@@ -91,9 +179,7 @@
 		.headerInfo{
 			display: flex;
 		}
-		.arrow{
-			/* border:pink solid; */
-		}
+	
 			
 		.daysOfWeek{
 			display: flex;
@@ -127,6 +213,139 @@
 		}
 		.childButtons:hover{
 			border: black solid 1px;
+		}
+
+
+/* Clock Styling */
+		.time{
+			border:green solid;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+		}
+		.timeHeader{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.clock{
+			/* border:red solid 1px;*/
+			background-color: var(--clock-color);
+			width:250px;
+			height:250px;
+			border-radius: 150px;
+			position: relative;
+			font-weight: 100;
+		}
+		.clockMin{
+			position: absolute;
+			/* border:green solid .5px; */
+			margin-top: 70px;
+			display: none;
+		}
+		.clockParts{
+			height:100%;
+			width:100%;
+			position: absolute;
+			margin-top:6px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-self: space-around;
+		}
+		.clockParts>div>button{
+			border-radius: 15px;
+			border:none;
+			background:none;
+			font-size: 25px;
+			padding: 0;
+			margin: 0;
+			width: 35px;
+			height:30px;
+		}
+		.clockParts>div{
+			height:14%;
+		}
+		.pos-center{
+			display: flex;
+			justify-content: center;
+			position: relative;
+			width: 100%;
+		}
+		.pos-second, .pos-third, .pos-fourth{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.pos-second{
+			width:65%;
+		}
+		.pos-third{
+			width: 87%;
+		}
+		.pos-fourth{
+			width: 95%;
+		}
+		.timeOutcome{
+			display: flex;
+			width:fit-content;
+			font-size: 40px;
+		}	
+
+
+		/* Slider styling */
+		.switch {
+		position: relative;
+		display: inline-block;
+		width: 60px;
+		height: 34px;
+		margin-right: 10px;
+		}
+		#checkbox { 
+		opacity: 0;
+		width: 0;
+		height: 0;
+		}
+		.slider {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: var(--dayTime-color);
+		-webkit-transition: .4s;
+		transition: .4s;
+		}
+		.slider:before {
+		position: absolute;
+		content: "";
+		height: 26px;
+		width: 26px;
+		left: 4px;
+		bottom: 4px;
+		background-color: rgb(255, 255, 255);
+		border: black 1px solid;
+		-webkit-transition: .4s;
+		transition: .4s;
+		}
+		#checkbox:checked + .slider {
+		background-color: #1b2630;
+		}
+		#checkbox:focus + .slider {
+		box-shadow: 0 0 1px #2196F3;
+		}
+		#checkbox:checked + .slider:before {
+		-webkit-transform: translateX(26px);
+		-ms-transform: translateX(26px);
+		transform: translateX(26px);
+		}
+		/* Rounded sliders */
+		.slider.round {
+		border-radius: 34px;
+		}
+		.slider.round:before {
+		border-radius: 50%;
 		}
 
 
