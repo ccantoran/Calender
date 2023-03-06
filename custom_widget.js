@@ -185,6 +185,7 @@ if (fullMonthStr == "February" && leapOrNoLeap == true){
         if(i <= numDayOfWeek){
             const childButtons = document.createElement("button")
             childButtons.setAttribute('class', 'childButtons')
+            childButtons.setAttribute('class', 'noHover')
             childButtons.setAttribute('disabled', true)
             dayGrid.appendChild(childButtons)
         }else{
