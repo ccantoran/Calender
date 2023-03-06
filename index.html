@@ -74,62 +74,35 @@
 			<!-- <button onclick="timeStr()">submit</button> -->
 			<div class="clock clockHour">
 				<div class="clockParts test1">
-					<div class="pos-center">
-						<button value="12" onclick="getTimeHour(12)" class="firstNum">12</button>
-					</div>
-					<div class="pos-second">
-						<button onclick="getTimeHour(11)">11</button>
-						<button onclick="getTimeHour(1)" class="secondNum">1</button>
-					</div>
-					<div class="pos-third">
-						<button onclick="getTimeHour(10)">10</button>
-						<button onclick="getTimeHour(2)">2</button>
-					</div>
-					<div class="pos-fourth">
-						<button onclick="getTimeHour(9)">9</button>
-						<button onclick="getTimeHour(3)">3</button>
-					</div>
-					<div class="pos-third">
-						<button onclick="getTimeHour(8)">8</button>
-						<button onclick="getTimeHour(4)">4</button>
-					</div>
-					<div class="pos-second">
-						<button onclick="getTimeHour(7)">7</button>
-						<button onclick="getTimeHour(5)">5</button>
-					</div>
-					<div class="pos-center">
-						<button value="11" onclick="getTimeHour(6)">6</button>
-					</div>
+					<button onclick="getTimeHour(1)" class="number1">1</button>
+					<button onclick="getTimeHour(2)" class="number2">2</button>
+					<button onclick="getTimeHour(3)" class="number3">3</button>
+					<button onclick="getTimeHour(4)" class="number4">4</button>
+					<button onclick="getTimeHour(5)" class="number5">5</button>
+					<button onclick="getTimeHour(6)" class="number6">6</button>
+					<button onclick="getTimeHour(7)" class="number7">7</button>
+					<button onclick="getTimeHour(8)" class="number8">8</button>
+					<button onclick="getTimeHour(9)" class="number9">9</button>
+					<button onclick="getTimeHour(10)" class="number10">10</button>
+					<button onclick="getTimeHour(11)" class="number11">11</button>
+					<button onclick="getTimeHour(12)" class="number12">12</button>
 				</div>
 			</div>
 			<div class="clock clockMin">
 				<div class="clockParts">
-					<div class="pos-center">
-						<button value="12" onclick="getTimeMin(0)">0</button>
-					</div>
-					<div class="pos-second">
-						<button onclick="getTimeMin(55)">55</button>
-						<button onclick="getTimeMin(5)">5</button>
-					</div>
-					<div class="pos-third">
-						<button onclick="getTimeMin(50)">50</button>
-						<button onclick="getTimeMin(10)">10</button>
-					</div>
-					<div class="pos-fourth">
-						<button onclick="getTimeMin(45)">45</button>
-						<button onclick="getTimeMin(15)">15</button>
-					</div>
-					<div class="pos-third">
-						<button onclick="getTimeMin(40)">40</button>
-						<button onclick="getTimeMin(20)">20</button>
-					</div>
-					<div class="pos-second">
-						<button onclick="getTimeMin(35)">35</button>
-						<button onclick="getTimeMin(25)">25</button>
-					</div>
-					<div class="pos-center">
-						<button value="11" onclick="getTimeMin(30)">30</button>
-					</div>
+					<button onclick="getTimeMin(0)" class="number12">0</button>
+					<button onclick="getTimeMin(5)" class="number1">5</button>
+					<button onclick="getTimeMin(10)" class="number2">10</button>
+					<button onclick="getTimeMin(15)" class="number3">15</button>
+					<button onclick="getTimeMin(20)" class="number4">20</button>
+					<button onclick="getTimeMin(25)" class="number5">25</button>
+					<button onclick="getTimeMin(30)" class="number6">30</button>
+					<button onclick="getTimeMin(35)" class="number7">35</button>
+					<button onclick="getTimeMin(40)" class="number8">40</button>
+					<button onclick="getTimeMin(45)" class="number9">45</button>
+					<button onclick="getTimeMin(50)" class="number10">50</button>
+					<button onclick="getTimeMin(55)" class="number11">55</button>
+
 				</div>
 			</div>
 			
@@ -201,7 +174,11 @@
 		.selectedDay, .headerYear{
 			padding-left:5px;
 		}
-
+		.timeOutcome{
+			display: flex;
+			width:fit-content;
+			font-size: 40px;
+		}	
 
 		.forwardArrow, .backArrow, .calenderIcon, .timeIcon {
 			background-color: white;
@@ -291,8 +268,6 @@
 			border: black solid 1px;
 		}
 
-
-
 		
 
 /* Clock Styling */
@@ -317,14 +292,13 @@
 		.clockParts{
 			height:100%;
 			width:100%;
-			position: absolute;
-			margin-top:6px;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-self: space-around;
+			position: relative;
 		}
-		.clockParts>div>button{
+
+		.clockParts>button{
+			position:absolute;
+			top:45%;
+			left:43%;
 			border-radius: 15px;
 			border:none;
 			background:none;
@@ -334,39 +308,24 @@
 			width: 35px;
 			height:30px;
 		}
-		.clockParts>div{
-			height:14%;
-		}
-		.pos-center{
-			display: flex;
-			justify-content: center;
-			position: relative;
-			width: 100%;
-		}
-		.pos-second, .pos-third, .pos-fourth{
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-		.pos-second{
-			width:65%;
-		}
-		.pos-third{
-			width: 87%;
-		}
-		.pos-fourth{
-			width: 95%;
-		}
-		.timeOutcome{
-			display: flex;
-			width:fit-content;
-			font-size: 40px;
-		}	
+
+		.number12{transform: translate(0, -100px);}
+		.number1{transform: translate(60px, -80px);}
+		.number2{transform: translate(90px, -45px);}
+		.number3{transform: translate(100px, 0);}
+		.number4{transform: translate(90px, 45px);}
+		.number5{transform: translate(60px,80px);}
+		.number6{transform: translate(0,100px);}
+		.number7{transform: translate(-60px, 80px);}		
+		.number8{transform:translate(-90px, 45px)}
+		.number9{transform: translate(-100px, 0);}
+		.number10{transform: translate(-90px, -45px);}
+		.number11{transform: translate(-60px, -80px);}
+
 
 
 		/* Slider styling */
 		.switch {
-		/* border:pink solid; */
 		position: relative;
 		display: inline-block;
 		width: 60px;
