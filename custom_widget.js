@@ -105,12 +105,12 @@ function selectedToday(){
 function iconToggle(str){
     if(str == "time"){
         document.querySelector('.calender').style.display = "none";
-        document.querySelector('.time').style.display = "flex"
+        document.querySelector('.clock').style.display = "flex"
         document.querySelector('.timeIcon').style.borderBottomColor = "var(--button-color)"
         document.querySelector('.calenderIcon').style.borderBottomColor = "var(--clock-color)"
 
     }else if(str == "calender"){
-        document.querySelector('.time').style.display = "none";
+        document.querySelector('.clock').style.display = "none";
         document.querySelector('.calender').style.display = "flex"
         document.querySelector('.calenderIcon').style.borderBottomColor = "var(--button-color)"
         document.querySelector('.timeIcon').style.borderBottomColor = "var(--clock-color)"
@@ -245,7 +245,7 @@ function getTimeHour(hr){
 
     //Min clock appears 
     document.querySelector('.clockMin').style.display = "flex"
-    document.querySelector('.test1').style.display = "none"
+    document.querySelector('.clockHour').style.display = "none"
 }
 
 //User Minute 
@@ -257,7 +257,7 @@ function getTimeMin(min){
     }
 
     //Hour Clock appears
-    document.querySelector('.test1').style.display = "flex"
+    document.querySelector('.clockHour').style.display = "flex"
     document.querySelector('.clockMin').style.display = "none"
 }
 
