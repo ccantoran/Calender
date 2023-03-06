@@ -34,116 +34,110 @@
 		</div>
 	</div>
 
-
-
-
-
-
-
-
-
 	<div class="calenderTimeToggle">
-		<button class="calenderIcon" onclick="iconToggle()"><i class="fa-solid fa-calendar-days"></i></button>
-		<button class="timeIcon" onclick="iconToggle()"><i class="fa-regular fa-clock"></i></button>
+		<button class="calenderIcon" onclick="iconToggle('calender')"><i class="fa-solid fa-calendar-days"></i></button>
+		<button class="timeIcon" onclick="iconToggle('time')"><i class="fa-regular fa-clock"></i></button>
 	</div>
 
 
 
 
-	<div class="calender">
-		
 
 
-		<header>
-			<div class="headerInfo">
-				<div class="headerMonth">month</div>
-				<div class="headerYear">year</div>
-			</div>
-			<div>
-				<button onclick="backArrow(); refreshDate(); datesOnCalender()" class="backArrow arrow"><i class="fa-solid fa-chevron-left"></i></button>
-				<button onclick="forwardArrow(); refreshDate(); datesOnCalender()" class="forwardArrow arrow" disabled><i class="fa-solid fa-chevron-right"></i></button>
-			</div>
-		</header>
-		<ul class="daysOfWeek">
-			<li>S</li>
-			<li>M</li>
-			<li>T</li>
-			<li>W</li>
-			<li>T</li>
-			<li>F</li>
-			<li>S</li>
-		</ul>
-		<ul class="dayGrid" id="dayGrid"></ul>
-		
-	</div>
-	<div class="time">
-		
-		
-	
-		<!-- <button onclick="timeStr()">submit</button> -->
-		<div class="clock clockHour">
-			<div class="clockParts test1">
-				<div class="pos-center">
-					<button value="12" onclick="getTimeHour(12)" class="firstNum">12</button>
+	<div class="tabResult">
+			
+		<div class="calender">
+			<header>
+				<div class="headerInfo">
+					<div class="headerMonth">month</div>
+					<div class="headerYear">year</div>
 				</div>
-				<div class="pos-second">
-					<button onclick="getTimeHour(11)">11</button>
-					<button onclick="getTimeHour(1)" class="secondNum">1</button>
+				<div>
+					<button onclick="backArrow(); refreshDate(); datesOnCalender()" class="backArrow arrow"><i class="fa-solid fa-chevron-left"></i></button>
+					<button onclick="forwardArrow(); refreshDate(); datesOnCalender()" class="forwardArrow arrow" disabled><i class="fa-solid fa-chevron-right"></i></button>
 				</div>
-				<div class="pos-third">
-					<button onclick="getTimeHour(10)">10</button>
-					<button onclick="getTimeHour(2)">2</button>
-				</div>
-				<div class="pos-fourth">
-					<button onclick="getTimeHour(9)">9</button>
-					<button onclick="getTimeHour(3)">3</button>
-				</div>
-				<div class="pos-third">
-					<button onclick="getTimeHour(8)">8</button>
-					<button onclick="getTimeHour(4)">4</button>
-				</div>
-				<div class="pos-second">
-					<button onclick="getTimeHour(7)">7</button>
-					<button onclick="getTimeHour(5)">5</button>
-				</div>
-				<div class="pos-center">
-					<button value="11" onclick="getTimeHour(6)">6</button>
-				</div>
-			</div>
+			</header>
+			<ul class="daysOfWeek">
+				<li>S</li>
+				<li>M</li>
+				<li>T</li>
+				<li>W</li>
+				<li>T</li>
+				<li>F</li>
+				<li>S</li>
+			</ul>
+			<ul class="dayGrid" id="dayGrid"></ul>
+			
 		</div>
-		<div class="clock clockMin">
-			<div class="clockParts">
-				<div class="pos-center">
-					<button value="12" onclick="getTimeMin(0)">0</button>
-				</div>
-				<div class="pos-second">
-					<button onclick="getTimeMin(55)">55</button>
-					<button onclick="getTimeMin(5)">5</button>
-				</div>
-				<div class="pos-third">
-					<button onclick="getTimeMin(50)">50</button>
-					<button onclick="getTimeMin(10)">10</button>
-				</div>
-				<div class="pos-fourth">
-					<button onclick="getTimeMin(45)">45</button>
-					<button onclick="getTimeMin(15)">15</button>
-				</div>
-				<div class="pos-third">
-					<button onclick="getTimeMin(40)">40</button>
-					<button onclick="getTimeMin(20)">20</button>
-				</div>
-				<div class="pos-second">
-					<button onclick="getTimeMin(35)">35</button>
-					<button onclick="getTimeMin(25)">25</button>
-				</div>
-				<div class="pos-center">
-					<button value="11" onclick="getTimeMin(30)">30</button>
+		<div class="time">
+							
+			<!-- <button onclick="timeStr()">submit</button> -->
+			<div class="clock clockHour">
+				<div class="clockParts test1">
+					<div class="pos-center">
+						<button value="12" onclick="getTimeHour(12)" class="firstNum">12</button>
+					</div>
+					<div class="pos-second">
+						<button onclick="getTimeHour(11)">11</button>
+						<button onclick="getTimeHour(1)" class="secondNum">1</button>
+					</div>
+					<div class="pos-third">
+						<button onclick="getTimeHour(10)">10</button>
+						<button onclick="getTimeHour(2)">2</button>
+					</div>
+					<div class="pos-fourth">
+						<button onclick="getTimeHour(9)">9</button>
+						<button onclick="getTimeHour(3)">3</button>
+					</div>
+					<div class="pos-third">
+						<button onclick="getTimeHour(8)">8</button>
+						<button onclick="getTimeHour(4)">4</button>
+					</div>
+					<div class="pos-second">
+						<button onclick="getTimeHour(7)">7</button>
+						<button onclick="getTimeHour(5)">5</button>
+					</div>
+					<div class="pos-center">
+						<button value="11" onclick="getTimeHour(6)">6</button>
+					</div>
 				</div>
 			</div>
+			<div class="clock clockMin">
+				<div class="clockParts">
+					<div class="pos-center">
+						<button value="12" onclick="getTimeMin(0)">0</button>
+					</div>
+					<div class="pos-second">
+						<button onclick="getTimeMin(55)">55</button>
+						<button onclick="getTimeMin(5)">5</button>
+					</div>
+					<div class="pos-third">
+						<button onclick="getTimeMin(50)">50</button>
+						<button onclick="getTimeMin(10)">10</button>
+					</div>
+					<div class="pos-fourth">
+						<button onclick="getTimeMin(45)">45</button>
+						<button onclick="getTimeMin(15)">15</button>
+					</div>
+					<div class="pos-third">
+						<button onclick="getTimeMin(40)">40</button>
+						<button onclick="getTimeMin(20)">20</button>
+					</div>
+					<div class="pos-second">
+						<button onclick="getTimeMin(35)">35</button>
+						<button onclick="getTimeMin(25)">25</button>
+					</div>
+					<div class="pos-center">
+						<button value="11" onclick="getTimeMin(30)">30</button>
+					</div>
+				</div>
+			</div>
+			
+			
 		</div>
-		
-		
 	</div>
+
+
 	
 
 
@@ -238,11 +232,18 @@
 		
 
 
-
+		.tabResult{
+			position:relative;
+			width: 100%;
+			height:300px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
 
 		.calender{
-			margin-top: 5%;
-			/* border:grey solid; */
+			position: relative;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -255,14 +256,7 @@
 		}
 		.headerInfo{
 			display: flex;
-		}
-		
-	
-
-
-
-
-			
+		}		
 		.daysOfWeek{
 			display: flex;
 			width: 95%;
@@ -272,7 +266,7 @@
 			margin-bottom: 0;
 		}
 		.dayGrid{
-			margin-top:0;
+			margin-top:5px;
 			height: 200px;
 			width:95%;
 			list-style-type: none;
@@ -283,8 +277,8 @@
 			grid-template-columns: repeat(7, 1fr);
 		}
 		.dayGrid>button{
-			width:100%;
-			border-radius: 20px;
+			width:90%;
+			border-radius: 30px;
 			border:none;
 		}
 		.childButtons{
@@ -303,25 +297,21 @@
 
 /* Clock Styling */
 		.time{
-			/* border:green solid; */
 			display: flex;
 			flex-direction: column;
 			justify-content: space-evenly;
+			position: absolute;
+			display: none;
 		}
-		
 		.clock{
-			/* border:red solid 1px;*/
 			background-color: var(--clock-color);
 			width:250px;
 			height:250px;
 			border-radius: 150px;
-			position: relative;
 			font-weight: 100;
 		}
 		.clockMin{
 			position: absolute;
-			/* border:green solid .5px; */
-			margin-top: 70px;
 			display: none;
 		}
 		.clockParts{

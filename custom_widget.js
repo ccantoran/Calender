@@ -55,7 +55,7 @@ function backArrow(){
     
     curMonth = curMonth - 1
 
-    if((curMonth == 1) && (curYear == lastYr)){
+    if((curMonth == todayMonth) && (curYear == lastYr)){
         document.querySelector('.backArrow').disabled = true
     }else if(curMonth == 0){
         curMonth = 12
@@ -98,6 +98,25 @@ function refreshDate(){
 function selectedToday(){
     location.reload();
 }
+
+
+
+////////////////////////////////////////////Icon Toggle/////////////////////////
+function iconToggle(str){
+    if(str == "time"){
+        document.querySelector('.calender').style.display = "none";
+        document.querySelector('.time').style.display = "flex"
+        document.querySelector('.timeIcon').style.borderBottomColor = "var(--button-color)"
+        document.querySelector('.calenderIcon').style.borderBottomColor = "var(--clock-color)"
+
+    }else if(str == "calender"){
+        document.querySelector('.time').style.display = "none";
+        document.querySelector('.calender').style.display = "flex"
+        document.querySelector('.calenderIcon').style.borderBottomColor = "var(--button-color)"
+        document.querySelector('.timeIcon').style.borderBottomColor = "var(--clock-color)"
+    }
+}
+
 
 //////////////////////////////////Populating Calender w/ Days /////////////////////////
 
