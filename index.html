@@ -1,13 +1,11 @@
 ﻿<!DOCTYPE html>
 <html style="overflow: hidden;">
 <head>
-    <!-- <script src="../Resources/Apis/Proxy.js" cwidget="DateWidget"></script> -->
+    <script src="../Resources/Apis/Proxy.js" cwidget="CalendarWidget"></script>
 	<script src="https://kit.fontawesome.com/59c032d6c4.js" crossorigin="anonymous"></script>
-    <title>DateWidget</title>
+    <title>CalendarWidget</title>
 </head>
 <body>
-
-
 
 	<div class="selectedDate">
 		<div class="selectedDateLeft">
@@ -16,14 +14,9 @@
 				<div class="selectedMonth"></div>
 				<div class="selectedDay"></div>
 			</div>
-			<!-- <button class="selectedToday" onclick="selectedToday()">Today</button> -->
 		</div>
 			
 		<div class="selectedTimeRight">
-			<label class="switch" for="checkbox">
-				<input type="checkbox" name="checkbox" id="checkbox" onclick="dayChange()">
-				<span class="slider round"></span>
-			</label>
 			<div class="timeOutcome">
 				<div id="userHour">00</div>
 				<div>:</div>
@@ -34,24 +27,24 @@
 		</div>
 	</div>
 
-	<div class="calenderTimeToggle">
-		<button class="calenderIcon" onclick="iconToggle('calender')"><i class="fa-solid fa-calendar-days"></i></button>
-		<button class="timeIcon" onclick="iconToggle('time')"><i class="fa-regular fa-clock"></i></button>
+	<div class="calendarTimeToggle">
+		<button class="calendarIcon" onclick="iconToggle('calendar')"><img src="Pictures/calendarIcon.png" alt=""></button>
+		<button class="timeIcon" onclick="iconToggle('time')"><img src="Pictures/clockIcon.png"></button>
 	</div>
 
 
 
 	<div class="tabResult">
 			
-		<div class="calender">
+		<div class="calendar">
 			<header>
 				<div class="headerInfo">
 					<div class="headerMonth">month</div>
 					<div class="headerYear">year</div>
 				</div>
 				<div>
-					<button onclick="backArrow(); refreshDate(); datesOnCalender()" class="backArrow arrow"><i class="fa-solid fa-chevron-left"></i></button>
-					<button onclick="forwardArrow(); refreshDate(); datesOnCalender()" class="forwardArrow arrow" disabled><i class="fa-solid fa-chevron-right"></i></button>
+					<button onclick="backArrow(); refreshDate(); datesOnCalendar()" class="backArrow arrow"><img src="Pictures/leftArrow.png"></button>
+					<button onclick="forwardArrow(); refreshDate(); datesOnCalendar()" class="forwardArrow arrow" disabled><img src="Pictures/rightArrow.png"></button>
 				</div>
 			</header>
 			<ul class="daysOfWeek">
@@ -69,34 +62,38 @@
 		<div class="clock">
 							
 				<div class="clockParts clockHour">
-					<button onclick="getTimeHour(1)" class="number1">1</button>
-					<button onclick="getTimeHour(2)" class="number2">2</button>
-					<button onclick="getTimeHour(3)" class="number3">3</button>
-					<button onclick="getTimeHour(4)" class="number4">4</button>
-					<button onclick="getTimeHour(5)" class="number5">5</button>
-					<button onclick="getTimeHour(6)" class="number6">6</button>
-					<button onclick="getTimeHour(7)" class="number7">7</button>
-					<button onclick="getTimeHour(8)" class="number8">8</button>
-					<button onclick="getTimeHour(9)" class="number9">9</button>
-					<button onclick="getTimeHour(10)" class="number10">10</button>
-					<button onclick="getTimeHour(11)" class="number11">11</button>
-					<button onclick="getTimeHour(12)" class="number12">12</button>
+					<button onclick="getTimeHour(1); getStr()" class="number1">1</button>
+					<button onclick="getTimeHour(2); getStr()" class="number2">2</button>
+					<button onclick="getTimeHour(3); getStr()" class="number3">3</button>
+					<button onclick="getTimeHour(4); getStr()" class="number4">4</button>
+					<button onclick="getTimeHour(5); getStr()" class="number5">5</button>
+					<button onclick="getTimeHour(6); getStr()" class="number6">6</button>
+					<button onclick="getTimeHour(7); getStr()" class="number7">7</button>
+					<button onclick="getTimeHour(8); getStr()" class="number8">8</button>
+					<button onclick="getTimeHour(9); getStr()" class="number9">9</button>
+					<button onclick="getTimeHour(10); getStr()" class="number10">10</button>
+					<button onclick="getTimeHour(11); getStr()" class="number11">11</button>
+					<button onclick="getTimeHour(12); getStr()" class="number12">12</button>
 				</div>
 				<div class="clockParts clockMin">
-					<button onclick="getTimeMin(0)" class="number12">0</button>
-					<button onclick="getTimeMin(5)" class="number1">5</button>
-					<button onclick="getTimeMin(10)" class="number2">10</button>
-					<button onclick="getTimeMin(15)" class="number3">15</button>
-					<button onclick="getTimeMin(20)" class="number4">20</button>
-					<button onclick="getTimeMin(25)" class="number5">25</button>
-					<button onclick="getTimeMin(30)" class="number6">30</button>
-					<button onclick="getTimeMin(35)" class="number7">35</button>
-					<button onclick="getTimeMin(40)" class="number8">40</button>
-					<button onclick="getTimeMin(45)" class="number9">45</button>
-					<button onclick="getTimeMin(50)" class="number10">50</button>
-					<button onclick="getTimeMin(55)" class="number11">55</button>
+					<button onclick="getTimeMin(0); getStr()" class="number12">0</button>
+					<button onclick="getTimeMin(5); getStr()" class="number1">5</button>
+					<button onclick="getTimeMin(10); getStr()" class="number2">10</button>
+					<button onclick="getTimeMin(15); getStr()" class="number3">15</button>
+					<button onclick="getTimeMin(20); getStr()" class="number4">20</button>
+					<button onclick="getTimeMin(25); getStr()" class="number5">25</button>
+					<button onclick="getTimeMin(30); getStr()" class="number6">30</button>
+					<button onclick="getTimeMin(35); getStr()" class="number7">35</button>
+					<button onclick="getTimeMin(40); getStr()" class="number8">40</button>
+					<button onclick="getTimeMin(45); getStr()" class="number9">45</button>
+					<button onclick="getTimeMin(50); getStr()" class="number10">50</button>
+					<button onclick="getTimeMin(55); getStr()" class="number11">55</button>
 
 				</div>
+				<button class="amButton" onclick="dayChange('am'); getStr()">AM</button>
+				<button class="pmButton" onclick="dayChange('pm'); getStr()">PM</button>
+
+		
 		</div>
 	</div>
 
@@ -118,6 +115,8 @@
 			flex-direction: column;
 			align-items: center;
 			width: 400px;
+			margin:0;
+			padding:0;
 		}
 		:root{
 			--button-color:rgb(250, 232, 133);
@@ -134,21 +133,20 @@
 		
 		.selectedDate{
 			width: 95%;
-			height: fit-content;
 			display: flex;
 			justify-content: space-between;
+			align-items: end;
 		}
 		.selectedDateLeft{
-			display: flex;
-			flex-direction: column;
-			justify-content: end;
+			height: fit-content;
 		}
 		.selectedTimeRight{
+			
 			display: flex;
 			flex-direction: column;
-			text-align:end;
 			align-items: end;
-			margin-top: 10px;
+			justify-content: end; 
+			height: fit-content;
 		}
 		.selectedYear{
 			color: grey;
@@ -157,10 +155,11 @@
 			display: flex;
 			font-size: 35px;
 		}
-		.selectedToday{
+		/* .selectedToday{
 			height: 20px;
 			width: 70px;
-		}
+			border:orange solid;
+		} */
 		.selectedDay, .headerYear{
 			padding-left:5px;
 		}
@@ -170,7 +169,7 @@
 			font-size: 40px;
 		}	
 
-		.forwardArrow, .backArrow, .calenderIcon, .timeIcon {
+		.forwardArrow, .backArrow, .calendarIcon, .timeIcon {
 			background-color: white;
 			border: none;
 		}
@@ -178,25 +177,31 @@
 
 
 
-		.calenderTimeToggle{
+		.calendarTimeToggle{
 			margin-top: 10px;
 			height:40px;
 			display: flex;
 			width: 100%;
 			justify-content: space-around;
 		}
-		.calenderIcon, .timeIcon{
+		.calendarIcon, .timeIcon{
 			width: 45%;
 			text-align: center;
-			font-size: 25px;
+			/* font-size: 25px; */
 		}
-		.calenderIcon{
+		.calendarIcon{
 			border-bottom:var(--button-color) solid;
 		}
 		.timeIcon{
 			border-bottom: var(--clock-color) solid;
 		}
-		
+		.calendarIcon>img{
+			width: 30px;
+		}
+		.timeIcon>img{
+			width: 30px;
+			margin-top:7px;
+		}
 
 
 		.tabResult{
@@ -209,7 +214,7 @@
 			justify-content: center;
 		}
 
-		.calender{
+		.calendar{
 			position: relative;
 			display: flex;
 			flex-direction: column;
@@ -274,7 +279,6 @@
 			height:250px;
 			border-radius: 150px;
 			font-weight: 100;
-
 		}
 		.clockParts{
 			height:100%;
@@ -315,60 +319,29 @@
 
 
 
-		/* Slider styling */
-		.switch {
-		position: relative;
-		display: inline-block;
-		width: 60px;
-		height: 34px;
-		margin-right: 10px;
+		.amButton, .pmButton{
+			width:fit-content;
+			background-color: var(--clock-color);
+			border:none;
+			border-radius: 20px;
+			padding: 10px;
+			position: absolute;
+			font-size: 18px;
 		}
-		#checkbox { 
-		opacity: 0;
-		width: 0;
-		height: 0;
+		.amButton:focus, .pmButton:focus{
+			background-color: var(--button-color);
 		}
-		.slider {
-		position: absolute;
-		cursor: pointer;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-color: var(--dayTime-color);
-		-webkit-transition: .4s;
-		transition: .4s;
-		}
-		.slider:before {
-		position: absolute;
-		content: "";
-		height: 26px;
-		width: 26px;
-		left: 4px;
-		bottom: 4px;
-		background-color: rgb(255, 255, 255);
-		border: black 1px solid;
-		-webkit-transition: .4s;
-		transition: .4s;
-		}
-		#checkbox:checked + .slider {
-		background-color: #1b2630;
-		}
-		#checkbox:focus + .slider {
-		box-shadow: 0 0 1px #2196F3;
-		}
-		#checkbox:checked + .slider:before {
-		-webkit-transform: translateX(26px);
-		-ms-transform: translateX(26px);
-		transform: translateX(26px);
-		}
+		.amButton{transform: translate(-60px, 110px);}
+		.pmButton{transform: translate(250px, 110px);}
+
+
 		/* Rounded sliders */
 		.slider.round {
 		border-radius: 34px;
 		}
 		.slider.round:before {
 		border-radius: 50%;
-		}
+		} 
 
 
 	</style>

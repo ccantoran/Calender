@@ -104,21 +104,21 @@ function selectedToday(){
 ////////////////////////////////////////////Icon Toggle/////////////////////////
 function iconToggle(str){
     if(str == "time"){
-        document.querySelector('.calender').style.display = "none";
+        document.querySelector('.calendar').style.display = "none";
         document.querySelector('.clock').style.display = "flex"
         document.querySelector('.timeIcon').style.borderBottomColor = "var(--button-color)"
-        document.querySelector('.calenderIcon').style.borderBottomColor = "var(--clock-color)"
+        document.querySelector('.calendarIcon').style.borderBottomColor = "var(--clock-color)"
 
-    }else if(str == "calender"){
+    }else if(str == "calendar"){
         document.querySelector('.clock').style.display = "none";
-        document.querySelector('.calender').style.display = "flex"
-        document.querySelector('.calenderIcon').style.borderBottomColor = "var(--button-color)"
+        document.querySelector('.calendar').style.display = "flex"
+        document.querySelector('.calendarIcon').style.borderBottomColor = "var(--button-color)"
         document.querySelector('.timeIcon').style.borderBottomColor = "var(--clock-color)"
     }
 }
 
 
-//////////////////////////////////Populating Calender w/ Days /////////////////////////
+//////////////////////////////////Populating Calendar w/ Days /////////////////////////
 
 let daysInMonthObj = {
     "January": 31,
@@ -146,10 +146,10 @@ let daysOfWeekObj = {
     6 : "Saturday",
 }
 
-function datesOnCalender(){
+function datesOnCalendar(){
 let dayGrid = document.querySelector('.dayGrid')  
 
-// Delete the days if the calender is already populated 
+// Delete the days if the calendar is already populated 
 let element = document.getElementById("dayGrid");
     while (element.firstChild) {
     element.removeChild(element.firstChild);
@@ -180,7 +180,6 @@ if (fullMonthStr == "February" && leapOrNoLeap == true){
     totalDaysInMonth = daysInMonthObj.February.false
 }
 
-
     for(let i=1; i<=totalDaysInMonth + numDayOfWeek; i++){
         if(i <= numDayOfWeek){
             const childButtons = document.createElement("button")
@@ -204,31 +203,16 @@ if (fullMonthStr == "February" && leapOrNoLeap == true){
     }
 }
 
-datesOnCalender()
+datesOnCalendar()
 
-//////////////////////////////////Data Str ///////////////////////
-
-function getStr(){
-let dataMonth = curMonth.toString().length == 1 ? `0${curMonth}` : curMonth
-var dataStr = ''
-
-    if(curDay.toString().length == 1){
-        dataStr = `${curYear}-${dataMonth}-0${curDay}`
-    }else{
-        dataStr = `${curYear}-${dataMonth}-${curDay}`
-    }
-    console.log(dataStr)
-}
-
-getStr()
 
 
 ////////////////////////////////////////////////////////////////////////////////////Clock//////////////////////////////////////////////////
 
 //AM PM toggle
-function dayChange(){
-    var checkBox = document.getElementById('checkbox')
-    if(checkBox.checked){
+function dayChange(str){
+    // var checkBox = document.getElementById('checkbox')
+    if(str == "pm"){
        document.getElementById('userAmPm').innerText = 'PM'
     }else{
        document.getElementById('userAmPm').innerText = 'AM'
@@ -263,18 +247,45 @@ function getTimeMin(min){
 }
 
 
-//Data Str 
-function timeStr(){
-    let strHr = document.getElementById('userHour').innerText 
-    let strMin = document.getElementById('userMin').innerText
+
+
+
+
+//////////////////////////////////Data Str ///////////////////////
+
+function getStr(){
+    let dataMonth = curMonth.toString().length == 1 ? `0${curMonth}` : curMonth
+    var dataStr = ''
+    var strHr = ''
     var amOrPm = document.getElementById('userAmPm').innerText
+    var userHour = document.getElementById('userHour').innerText
+   
     
-    if(amOrPm.includes('PM')){
-        strHr = parseInt(strHr) + 12
-    }
+    
+        if(curDay.toString().length == 1){
+            dataStr = `${curYear}-${dataMonth}-0${curDay}`
+        }else{
+            dataStr = `${curYear}-${dataMonth}-${curDay}`
+        }
 
-    console.log(`datastr for hour will be ${strHr}:${strMin}`)
-}
+        if(amOrPm.includes('AM') && userHour == '12'){
+            strHr = '00'
+        }else if(amOrPm.includes('PM') && userHour != '12'){
+            strHr = parseInt(userHour) + 12
+        }else{
+            strHr = userHour
+        }
+    
+        let strMin = document.getElementById('userMin').innerText
+          
+    console.log(`${dataStr} ${strHr}:${strMin}`)
+    cwidget.CalendarProp = `${dataStr} ${strHr}:${strMin}`
+    cwidget.CalendarProp1 = `${curMonth}/${curDay}/${curYear} ${userHour}:${strMin} ${amOrPm}`
+           
+}   
+    
+getStr()
 
 
-timeStr()
+
+
